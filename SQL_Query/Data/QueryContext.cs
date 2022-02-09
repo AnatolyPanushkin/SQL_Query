@@ -6,9 +6,9 @@ namespace SQL_Query.Data
 {
     public class QueryContext:DbContext
     {
-        QueryContext(){}
+        public QueryContext(){}
         
-        QueryContext(DbContextOptions options):base(options){}
+        public QueryContext(DbContextOptions options):base(options){}
 
         public virtual DbSet<Catigory> Catigories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
@@ -27,6 +27,7 @@ namespace SQL_Query.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+             
             modelBuilder.Entity<ProductCategory>(entity => { entity.HasKey(sc => new {sc.ProductId, sc.CatigoryId}); });
         }
         
